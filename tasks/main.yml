@@ -49,6 +49,9 @@
   args:
     chdir: "/tmp/nginx-{{ nginxVersion }}"
 
+- name: Ensures /etc/nginx/modules/ dir exists
+  file: path=/etc/nginx/modules state=directory
+
 - name: copy extension to nginx modules
   copy: remote_src=True src=/tmp/nginx-{{ nginxVersion }}/objs/ngx_pagespeed.so dest=/etc/nginx/modules/ngx_pagespeed.so
 
